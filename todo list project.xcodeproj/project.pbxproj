@@ -71,15 +71,39 @@
 				68521DDB289C192900EAE8DE /* Assets.xcassets */,
 				68521DE0289C192900EAE8DE /* Info.plist */,
 				68521DDD289C192900EAE8DE /* LaunchScreen.storyboard */,
-				68521DD8289C192700EAE8DE /* Main.storyboard */,
 				68301C3028BF675A00379459 /* Todos.xcdatamodeld */,
+				6888784228CA99F00057EB72 /* models */,
+				6888784328CA9A050057EB72 /* views */,
+				6888784428CA9A2B0057EB72 /* controlers */,
+			);
+			path = "todo list project";
+			sourceTree = "<group>";
+		};
+		6888784228CA99F00057EB72 /* models */ = {
+			isa = PBXGroup;
+			children = (
 				68521DE8289C239600EAE8DE /* todo cell Model.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		6888784328CA9A050057EB72 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				68521DD8289C192700EAE8DE /* Main.storyboard */,
 				68521DE6289C1A3500EAE8DE /* todoTableViewCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		6888784428CA9A2B0057EB72 /* controlers */ = {
+			isa = PBXGroup;
+			children = (
 				68521DD6289C192700EAE8DE /* TodoListViewController.swift */,
 				68521DEA289C548500EAE8DE /* detailsViewController.swift */,
 				68C382D0289D7CF1005706AE /* AddEditTodoViewController.swift */,
 			);
-			path = "todo list project";
+			path = controlers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

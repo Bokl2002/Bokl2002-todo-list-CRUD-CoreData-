@@ -33,7 +33,6 @@ class AddEditTodoViewController: UIViewController{
             deleteToDoBTN.isHidden = true
         }
 
-        
     }
     
     
