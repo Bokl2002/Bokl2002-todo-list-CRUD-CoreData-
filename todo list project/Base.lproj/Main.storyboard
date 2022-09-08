@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8gH-Me-Dbo">
-                                <rect key="frame" x="0.0" y="140" width="428" height="703"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="todocell" rowHeight="90" id="eqU-cL-HcN" customClass="todoTableViewCell" customModule="todo_list_project" customModuleProvider="target">
@@ -191,11 +191,11 @@
             </objects>
             <point key="canvasLocation" x="2486.9158878504672" y="-28.509719222462206"/>
         </scene>
-        <!--Item-->
+        <!--todo-->
         <scene sceneID="ueG-l0-eFq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="drb-Qj-YQw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="checkmark.rectangle" catalog="system" id="aRR-dI-qZO"/>
+                    <tabBarItem key="tabBarItem" title="todo" image="checkmark.rectangle" catalog="system" id="aRR-dI-qZO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9BK-jJ-rmj">
                         <rect key="frame" x="0.0" y="44" width="428" height="96"/>
@@ -368,7 +368,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.35847976527105491" green="0.76671350955664086" blue="0.89071136713027954" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="selectedImageTintColor" systemColor="systemIndigoColor"/>
+                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="drb-Qj-YQw" kind="relationship" relationship="viewControllers" id="ZSL-mB-GQF"/>
@@ -418,9 +419,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
