@@ -269,6 +269,7 @@
                                                             </button>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="IQH-m2-23s" firstAttribute="leading" secondItem="Tz7-0w-H9U" secondAttribute="leading" id="CHb-ic-kUl"/>
                                                             <constraint firstItem="IQH-m2-23s" firstAttribute="width" secondItem="Tz7-0w-H9U" secondAttribute="width" multiplier="0.8" id="whk-42-vb5"/>
                                                         </constraints>
                                                     </stackView>
@@ -350,6 +351,7 @@
                     <navigationItem key="navigationItem" title="New ToDo" largeTitleDisplayMode="never" id="bPX-zK-PIA"/>
                     <connections>
                         <outlet property="addEditButton" destination="hhI-Bg-bEx" id="AL5-B0-lMd"/>
+                        <outlet property="deleteToDoBTN" destination="1Wz-0H-ooY" id="HSE-c1-OCb"/>
                         <outlet property="taskDetailsTextField" destination="ZNR-xZ-rdp" id="6p4-f2-40z"/>
                         <outlet property="taskTitleTextField" destination="8TT-ca-p9Z" id="m6S-W2-a3G"/>
                         <outlet property="todoImage" destination="1h2-QB-guZ" id="hp6-Mn-Ipo"/>

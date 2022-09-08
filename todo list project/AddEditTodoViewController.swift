@@ -22,12 +22,15 @@ class AddEditTodoViewController: UIViewController{
     @IBOutlet weak var taskDetailsTextField: UITextView!
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var todoImage: UIImageView!
+    @IBOutlet weak var deleteToDoBTN: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if isEdit{
             perpare2Edit()
+        }else{
+            deleteToDoBTN.isHidden = true
         }
 
         
@@ -51,13 +54,13 @@ class AddEditTodoViewController: UIViewController{
         let alert = UIAlertController(title: "Warning", message: "Are you sure to delete this item ?", preferredStyle: .alert)
         let sureDelete = UIAlertAction(title: "Delete", style: .destructive){_ in
             NotificationCenter.default.post(Notification(name: Notification.Name("deleteToDo"), userInfo: ["deleteIdx": self.idx!]))
+            self.deleteFromCoredata()
             self.navigationController?.popToRootViewController(animated: true)
         }
         let cancelAlert = UIAlertAction(title: "cancel", style: .default)
         alert.addAction(sureDelete)
         alert.addAction(cancelAlert)
         present(alert, animated: true)
-        deleteFromCoredata()
     }
   
     @IBAction func chooseImageBTN(_ sender: Any) {
@@ -71,6 +74,7 @@ class AddEditTodoViewController: UIViewController{
         taskTitleTextField.text = editToDoData?.todoName
         taskDetailsTextField.text = editToDoData?.todoDetails
         todoImage.image = editToDoData?.todoImage
+        deleteToDoBTN.isHidden = false
     }
   
     func addToCoredata(){
@@ -128,6 +132,9 @@ class AddEditTodoViewController: UIViewController{
     func addAlerts(){
         //stay here alert
         alert = UIAlertController(title: "Done", message: "ToDo added", preferredStyle: UIAlertController.Style.alert)
+        if isEdit{
+            alert.message = "ToDo edited"
+        }
         let stayHereAlertAction = UIAlertAction(title: "stay here", style: UIAlertAction.Style.default) { _ in
             self.cleaR()
         }
