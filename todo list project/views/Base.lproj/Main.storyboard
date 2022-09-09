@@ -225,7 +225,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ScC-ug-Yv8">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="264.33333333333331"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-QB-guZ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultjpeg" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-QB-guZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="428" height="237.66666666666666"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-iG-E8m">
@@ -407,7 +407,7 @@
     </scenes>
     <resources>
         <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
-        <image name="default" width="1606" height="1226"/>
+        <image name="defaultjpeg" width="1606" height="1226"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">

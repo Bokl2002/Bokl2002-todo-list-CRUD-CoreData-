@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import CDAlertView
 
 class AddEditTodoViewController: UIViewController{
     
@@ -31,37 +32,20 @@ class AddEditTodoViewController: UIViewController{
             perpare2Edit()
         }else{
             deleteToDoBTN.isHidden = true
+            todoImage.image = UIImage(named: "defaultjpeg")//jpeg photo
         }
 
     }
     
-    
     // actions
     @IBAction func addEditTaskButton(_ sender: Any) {
         storeNewData()
-        if !isEdit{ // if you want to add not to edit
-            NotificationCenter.default.post(Notification(name: Notification.Name("newTaskAdded"), userInfo: ["addedToDo":newToDo!]))
-            addToCoredata()
-        }else{
-            NotificationCenter.default.post(Notification(name: Notification.Name("editedTask"), userInfo: ["editedToDo":newToDo!, "idx":self.idx!]))
-            editInCoredata()
-        }
-        addAlerts()
+        editingOrAdding()
+        addEditAlerts()
     }
-   
     @IBAction func deleteToDo(_ sender: Any) {
-        let alert = UIAlertController(title: "Warning", message: "Are you sure to delete this item ?", preferredStyle: .alert)
-        let sureDelete = UIAlertAction(title: "Delete", style: .destructive){_ in
-            NotificationCenter.default.post(Notification(name: Notification.Name("deleteToDo"), userInfo: ["deleteIdx": self.idx!]))
-            self.deleteFromCoredata()
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-        let cancelAlert = UIAlertAction(title: "cancel", style: .default)
-        alert.addAction(sureDelete)
-        alert.addAction(cancelAlert)
-        present(alert, animated: true)
+        deleteAlerts()
     }
-  
     @IBAction func chooseImageBTN(_ sender: Any) {
         chooseImageGalary()
     }
@@ -75,89 +59,62 @@ class AddEditTodoViewController: UIViewController{
         todoImage.image = editToDoData?.todoImage
         deleteToDoBTN.isHidden = false
     }
-  
-    func addToCoredata(){
-        guard let todoEntity = NSEntityDescription.entity(forEntityName: "Todos", in: Context) else {return}
-        let todo = NSManagedObject.init(entity: todoEntity, insertInto: Context)
-        todo.setValue(newToDo.todoName, forKey: "todoName")
-        todo.setValue(newToDo.todoDate, forKey: "todoDate")
-        if let temp = newToDo.todoImage{
-            let img = temp.jpegData(compressionQuality: 0.8)
-            todo.setValue(img, forKey: "todoImage")
-        }
-        todo.setValue(newToDo.todoDetails, forKey: "todoDetails")
-        do {
-            try Context.save()
-            print("Done")
-        } catch {
-            print(error)
-        }
-    }
-    
-    func editInCoredata(){
-        let FR: NSFetchRequest<Todos> = Todos.fetchRequest()
-        FR.returnsObjectsAsFaults = false
-        do {
-            let result = try Context.fetch(FR) as [NSManagedObject]
-            result[idx].setValue(taskTitleTextField.text, forKey: "todoName")
-            result[idx].setValue(taskDetailsTextField.text, forKey: "todoDetails")
-//            result[idx].setValue(<#T##Any?#>, forKey: "todoDate")
-            if let temp = todoImage.image{
-                let img = temp.jpegData(compressionQuality: 0.8)
-                result[idx].setValue(img, forKey: "todoImage")
-            }
-            try Context.save()
-        } catch {
-            print(error)
-        }
-    }
-    
-    func deleteFromCoredata(){
-        let FR: NSFetchRequest<Todos> = Todos.fetchRequest()
-        do {
-            let result = try Context.fetch(FR) as [NSManagedObject]
-            Context.delete(result[idx])
-            try Context.save()
-        } catch  {
-            print(error)
-        }
-    }
-    
+
     func cleaR(){
         taskTitleTextField.text = ""
         taskDetailsTextField.text = ""
     }
     
-    func addAlerts(){
-        //stay here alert
-        alert = UIAlertController(title: "Done", message: "ToDo added", preferredStyle: UIAlertController.Style.alert)
-        if isEdit{
-            alert.message = "ToDo edited"
-        }
-        let stayHereAlertAction = UIAlertAction(title: "stay here", style: UIAlertAction.Style.default) { _ in
-            self.cleaR()
-        }
-        var goBack: UIAlertAction!
-        if isEdit{
-            goBack = UIAlertAction(title: "Go Back", style: .default){_ in
-                self.navigationController?.popViewController(animated: true)
-            }
-        }else{
-            goBack = UIAlertAction(title: "Go To Main", style: .default){_ in
-                self.tabBarController?.selectedIndex = 0
-            }
-        }
-        alert.addAction(goBack)
-        alert.addAction(stayHereAlertAction)
-        present(alert, animated: true) {
-            //
-        }
-        
-    }
-    
     func storeNewData(){
         newToDo = todoCellModel(todoName: taskTitleTextField.text!, todoImage: self.todoImage.image, todoDetails: taskDetailsTextField.text ?? "")
-
+    }
+    
+    func editingOrAdding(){
+        if !isEdit{ // if you want to add not to edit
+            NotificationCenter.default.post(Notification(name: Notification.Name("newTaskAdded"), userInfo: ["addedToDo":newToDo!]))
+            cdCRUD.addToCoredata(newToDo)
+        }else{
+            NotificationCenter.default.post(Notification(name: Notification.Name("editedTask"), userInfo: ["editedToDo":newToDo!, "idx":self.idx!]))
+            // edit core data
+            let temp = todoCellModel(todoName: taskTitleTextField.text!, todoImage: todoImage.image, todoDetails: taskDetailsTextField.text!)
+            cdCRUD.editInCoredata(idx: self.idx, todoData: temp)
+        }
+    }
+    
+    func addEditAlerts(){
+        var alert = CDAlertView(title: "Done", message: "Todo added", type: .success)
+        if isEdit{
+            alert = CDAlertView(title: "Done", message: "Todo edited", type: .success)
+        }
+        let action = CDAlertViewAction(title: "Go to main"){_ in
+            if self.isEdit{
+                self.navigationController?.popToRootViewController(animated: true)
+            }else{
+                self.tabBarController?.selectedIndex = 0
+            }
+            return true
+        }
+        alert.add(action: action)
+        let doneAction = CDAlertViewAction(title: "Done"){_ in
+            self.cleaR()
+            return true
+        }
+        alert.add(action: doneAction)
+        alert.show()
+    }
+    
+    func deleteAlerts(){
+        let alert = CDAlertView(title: "Warning", message: "Are you sure to delete this item ?", type: .warning)
+        let cancelAction = CDAlertViewAction(title: "cancel")
+        alert.add(action: cancelAction)
+        let deleteAction = CDAlertViewAction(title: "Delete", textColor: .red){_ in
+            NotificationCenter.default.post(Notification(name: Notification.Name("deleteToDo"), userInfo: ["deleteIdx": self.idx!]))
+            cdCRUD.deleteFromCoredata(self.idx)
+            self.navigationController?.popToRootViewController(animated: true)
+            return true
+        }
+        alert.add(action: deleteAction)
+        alert.show()
     }
     
 }

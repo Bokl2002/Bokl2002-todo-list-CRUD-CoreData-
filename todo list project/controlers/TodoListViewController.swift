@@ -26,7 +26,7 @@ class TodoListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(editToDo), name: NSNotification.Name("editedTask"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteToDo), name: NSNotification.Name("deleteToDo"), object: nil)
         
-        todosInCoredata()
+        todoDatabase = cdCRUD.todosInCoredata()
     }
     
     // functions
@@ -48,30 +48,6 @@ class TodoListViewController: UIViewController {
         if let idx = deleteIdx.userInfo?["deleteIdx"] as? Int{
             todoDatabase.remove(at: idx)
             todoListTableView.reloadData()
-        }
-    }
-    
-    func todosInCoredata(){
-        let FR: NSFetchRequest<Todos> = Todos.fetchRequest()
-        FR.returnsObjectsAsFaults = false
-        do {
-            let results = try Context.fetch(FR) as [NSManagedObject]
-            for result in results{
-                let todoName = result.value(forKey: "todoName") as? String
-//                let todoDate = result.value(forKey: "todoDate") as? String
-                
-                var todoImage: UIImage?
-                if let temp = result.value(forKey: "todoImage") as? Data{
-                    let img = UIImage(data: temp)
-                    todoImage = img!
-                }
-                
-                
-                let todoDetails = result.value(forKey: "todoDetails") as? String
-                todoDatabase.append(todoCellModel(todoName: todoName ?? "", todoImage: todoImage, todoDetails: todoDetails ?? "" ))
-            }
-        } catch {
-            print(error)
         }
     }
     
