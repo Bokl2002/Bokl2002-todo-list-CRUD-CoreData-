@@ -34,6 +34,6 @@ Don't forget to click add :)
 
 This a video explains how this app work!!
 <br>
-https://user-images.githubusercontent.com/113001767/189493799-2df68a9a-1b43-4cbc-ba83-41b66c952c69.mp4
+https://drive.google.com/file/d/1DCo3cnI2GQNp34akC2_CDeW3-XWSOGGW/view?usp=sharing
 
 
