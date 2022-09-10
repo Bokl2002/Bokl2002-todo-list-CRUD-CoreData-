@@ -31,3 +31,9 @@ If you make only some edits, click on edit to save edits and get a message to mo
 <br>
 Don't forget to click add :)
 <img width="321" alt="image" src="https://user-images.githubusercontent.com/113001767/189493716-bbaf8d0b-568e-459d-92b8-5a889f208dd1.png">
+
+This a video explains how this app work!!
+<br>
+https://user-images.githubusercontent.com/113001767/189493799-2df68a9a-1b43-4cbc-ba83-41b66c952c69.mp4
+
+
