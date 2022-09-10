@@ -21,13 +21,13 @@ This is the main screen, you can see two options
 <br>
 After clicking the trash button to confirm deleting if you choose delete, you will return to the main screen
 <br>
-<img width="409" alt="Screenshot 2022-09-08 at 2 35 30 PM" src="https://user-images.githubusercontent.com/113001767/189123929-8717320f-fdf6-4467-9707-fb4b478cd96d.png">
+<img width="257" alt="Screenshot 2022-09-10 at 6 53 27 PM" src="https://user-images.githubusercontent.com/113001767/189493612-926c1fb7-7761-4474-8c79-db01e7125361.png">
 If you make only some edits, click on edit to save edits and get a message to move you to the main screen or to stay here
 <br>
-<img width="237" alt="image" src="https://user-images.githubusercontent.com/113001767/189127228-7bc001f2-19f2-4d15-8f0e-10e92780c5e1.png">
+<img width="226" alt="image" src="https://user-images.githubusercontent.com/113001767/189493666-6a990f23-0e15-4231-80c5-60890f189e08.png">
 <br>
 &nbsp;&nbsp;2- "New" : add new todo<br>
 <img width="411" alt="image" src="https://user-images.githubusercontent.com/113001767/189128550-dacfc943-eec7-4d30-88ae-1c7996bbe09c.png">
 <br>
 Don't forget to click add :)
-<img width="417" alt="image" src="https://user-images.githubusercontent.com/113001767/189129161-45beae96-b7d8-4237-b25a-9e341845bf94.png">
+<img width="321" alt="image" src="https://user-images.githubusercontent.com/113001767/189493716-bbaf8d0b-568e-459d-92b8-5a889f208dd1.png">
