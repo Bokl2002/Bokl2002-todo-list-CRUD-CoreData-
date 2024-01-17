@@ -20,8 +20,6 @@
 
 ## 🏗️ Architecture: MVC
 
-## 📦 Backend : [NodeJS Job-Hub App](https://github.com/abdullahbokl/boklo_jobhub_backend)
-
 ## 📸 Screenshots :
 
 <img src="screenshots/image1.png" width="250"> <img src="screenshots/image2.png" width="250"> <img src="screenshots/image3.png" width="250">
